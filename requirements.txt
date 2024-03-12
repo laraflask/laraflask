@@ -1,0 +1,1 @@
+laraflask==0.24

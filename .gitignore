@@ -1,0 +1,12 @@
+.env
+.env.example
+
+laraflask_develop/
+laraflask/
+venv/
+
+# Pyre type checker
+.pyre/
+
+# templates
+.github/templates/*
