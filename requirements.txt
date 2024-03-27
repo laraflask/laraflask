@@ -1,1 +1,2 @@
-laraflask==0.24
+laraflask==0.26
+pytest==8.0.2

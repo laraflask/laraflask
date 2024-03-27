@@ -13,6 +13,10 @@ class WelcomeController:
 
         return render_template('welcome.html', data=data)
     
+    # The hello world method
+    def hello_world(self):
+        return jsonify({'message': 'Hello, World!'})
+    
     def post_method(self):
         # Catch all the post data from json
         post_data = request.json
