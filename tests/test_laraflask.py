@@ -1,6 +1,8 @@
 import pytest
 import laraflask
 import os
+import json
+import subprocess
 
 # Test if the laraflask package is installed correctly
 def test_laraflask_library_install():
@@ -30,6 +32,28 @@ def test_run_project():
 
     # Check if the project is running
     assert "Running on http://" in str(output)
+
+    # Kill the process
+    process.kill()
+
+# Test if the hello_world route is working correctly
+def test_hello_world_routes():
+    """Test if the hello_world route is working correctly."""
+    run_file = os.path.join(os.getcwd(), "run.py")
+
+    # Run the project
+    process = subprocess.Popen(["python", run_file], stdout=subprocess.PIPE)
+
+    # Access to /hello_world route
+    import requests
+    response = requests.get("http://localhost:5000/hello_world")
+
+    # Check if the response is correct
+    # assert response.status_code == 200
+
+    # Check if the response is correct
+    # from 'message' key object in the response
+    assert json.loads(response.text)["message"] == "Hello, World"
 
     # Kill the process
     process.kill()
