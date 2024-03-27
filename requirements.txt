@@ -1,2 +1,5 @@
 laraflask==0.26
 pytest==8.0.2
+
+# gunicorn for production wsgi server
+gunicorn==20.1.0

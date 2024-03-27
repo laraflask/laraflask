@@ -1,0 +1,23 @@
+# Docker Compose file for development
+# Use this only for development purposes
+# Do not use this for production
+# for production, use the docker-compose.yml file
+
+version: '3.8'
+
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: storage/docker/Dockerfile_development
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/test/health_check"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s

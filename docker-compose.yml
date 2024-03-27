@@ -1,0 +1,25 @@
+# Docker Compose file for production
+# Use this file to run the Flask app in a production environment
+
+# If you want to change the port, 
+# change the first port number in the ports section
+# and change in the storage/docker/Dockerfile_production file
+# Default port: 8000
+
+version: '3.8'
+
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: storage/docker/Dockerfile_production
+    ports:
+      - "8000:8000"  # Map port 8000 of the host to port 8000 of the container
+    volumes:
+      - .:/app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/test/health_check"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 30s

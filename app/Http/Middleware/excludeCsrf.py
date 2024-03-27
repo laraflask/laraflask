@@ -4,7 +4,7 @@ class ExcludeCSRFMiddleware:
         # Define the routes to exclude from CSRF protection
         self.exclude_routes = [
             {
-                'route' : '/post_method',
-                'function' : 'web.post_method'
+                'route' : '/test/post_method',
+                'function' : 'test.post_method'
             }
         ]

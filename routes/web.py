@@ -11,16 +11,3 @@ web_bp = Blueprint('web', __name__)
 def index():
     return WelcomeController().welcome()
 
-# Define routes for hello_world test
-@web_bp.route('/hello_world')
-def hello_world():
-    return WelcomeController().hello_world()
-
-# Define routes
-@web_bp.route('/post_method', methods=['POST'])
-def post_method():
-    return WelcomeController().post_method()
-
-@web_bp.route('/other_post_method', methods=['POST'])
-def other_post_method():
-    return WelcomeController().post_method()
