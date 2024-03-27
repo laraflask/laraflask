@@ -3,7 +3,7 @@ import requests
 
 # Test the '/test/hello_world' endpoint
 def test_response_hello_world():
-    container_ip = os.environ.get('CONTAINER_IP', 'localhost')
+    container_ip = os.environ.get('CONTAINER_IP', '0.0.0.0')
     app_port = 5000
 
     # Construct the URL for the endpoint
