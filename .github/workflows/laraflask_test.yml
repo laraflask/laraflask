@@ -28,4 +28,4 @@ jobs:
 
     - name: Run pytest for laraflask
       run: |
-        pytest tests/test_laraflask.py
+        pytest
