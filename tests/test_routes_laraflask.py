@@ -1,36 +1,13 @@
-import requests
 import os
-import time
+import requests
 
-# Wait for the Docker container to be ready
-time.sleep(120)  # Adjust this time as needed
-
-# Test if the hello_world route is working
-def test_http_code_hello_world():
-    # Get host and port from environment variables or use defaults
-    app_host = os.getenv('APP_HOST', 'localhost')
-    app_port = int(os.getenv('APP_PORT', 5000))
-
-    # Construct the URL for the endpoint
-    url = f'http://{app_host}:{app_port}/test/hello_world'
-
-    # Send a GET request to the URL
-    response = requests.get(url)
-
-    # Check for any HTTP errors
-    response.raise_for_status()
-
-    # Check if the response status code is 200
-    assert response.status_code == 200
-
-# Test if the hello_world route is returning the correct response
+# Test the '/test/hello_world' endpoint
 def test_response_hello_world():
-    # Get host and port from environment variables or use defaults
-    app_host = os.getenv('APP_HOST', 'localhost')
-    app_port = int(os.getenv('APP_PORT', 5000))
+    container_ip = os.environ.get('CONTAINER_IP', 'localhost')
+    app_port = 5000
 
     # Construct the URL for the endpoint
-    url = f'http://{app_host}:{app_port}/test/hello_world'
+    url = f'http://{container_ip}:{app_port}/test/hello_world'
 
     # Send a GET request to the URL
     response = requests.get(url)
