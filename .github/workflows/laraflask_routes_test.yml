@@ -21,6 +21,10 @@ jobs:
         docker-compose -f docker-compose.dev.yml up -d
         export CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' laraflask_development)
 
+    - name: Get CONTAINER IP
+      run: |
+        echo $CONTAINER_IP
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
