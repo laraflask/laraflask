@@ -1,10 +1,10 @@
 import requests
-from config.app import AppConfiguration
+import os
 
 # Test if the hello_world route is working
 def test_http_code_hello_world():
-    app_port = AppConfiguration().app_port
-    app_host = AppConfiguration().app_host
+    app_port = os.getenv('APP_PORT', 5000)
+    app_host = os.getenv('APP_HOST', '0.0.0.0')
     url = f'http://{app_host}:{app_port}/test/hello_world'
 
     response = requests.get(url)
@@ -14,8 +14,8 @@ def test_http_code_hello_world():
 
 # Test if the hello_world route is returning the correct response
 def test_response_hello_world():
-    app_port = AppConfiguration().app_port
-    app_host = AppConfiguration().app_host
+    app_port = os.getenv('APP_PORT', 5000)
+    app_host = os.getenv('APP_HOST', '0.0.0.0')
     url = f'http://{app_host}:{app_port}/test/hello_world'
 
     response = requests.get(url)
