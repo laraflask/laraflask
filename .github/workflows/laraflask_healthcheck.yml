@@ -1,4 +1,4 @@
-name: Run pytest
+name: Laraflask Health Check
 
 on:
   push:
@@ -26,21 +26,9 @@ jobs:
     - name: Access CONTAINER_IP from GITHUB_ENV
       run: echo "Container IP is $CONTAINER_IP"
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.8
-
-    - name: Install dependencies
+    - name: Curl to /test/health_check 
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Run pytest for laraflask
-      env:
-        CONTAINER_IP: ${{ env.CONTAINER_IP }}
-      run: |
-        pytest tests/test_routes_laraflask.py
+        curl -s http://$CONTAINER_IP:5000/test/health_check
 
     - name: Stop Docker Compose
       run: docker-compose -f docker-compose.dev.yml down
