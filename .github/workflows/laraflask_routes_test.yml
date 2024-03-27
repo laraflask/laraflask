@@ -37,7 +37,7 @@ jobs:
       env:
         CONTAINER_IP: ${{ env.CONTAINER_IP }}
       run: |
-        pytest --container-ip=$CONTAINER_IP test/test_laraflask.py
+        pytest test/test_laraflask.py
 
     - name: Stop Docker Compose
       run: docker-compose -f docker-compose.dev.yml down
