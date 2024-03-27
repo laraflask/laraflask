@@ -1,5 +1,9 @@
 import requests
 import os
+import time
+
+# Wait for the Docker container to be ready
+time.sleep(120)  # Adjust this time as needed
 
 # Test if the hello_world route is working
 def test_http_code_hello_world():
@@ -42,4 +46,3 @@ def test_response_hello_world():
 
     # Check if the value of the 'message' key is 'Hello, World!'
     assert response_json['message'] == 'Hello, World!'
-    
