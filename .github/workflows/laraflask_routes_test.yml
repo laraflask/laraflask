@@ -19,7 +19,7 @@ jobs:
     - name: Start Docker Compose
       run: |
         docker-compose -f docker-compose.dev.yml up -d
-        export CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_name_or_id>)
+        export CONTAINER_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' laraflask_development)
 
     - name: Set up Python
       uses: actions/setup-python@v2
